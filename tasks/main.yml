@@ -73,8 +73,11 @@
     group: root
     owner: root
     mode: 0644
-    line: '{{item.key}}: {{item.value}}'
-  when: email_aliases is defined
-  with_dict: email_aliases
+    line: '{{ item.key }}: {{ item.value }}'
+    regexp: '{{ item.key }}:'
+    state: present
+    create: True
+  when: postfix_ea_email_aliases is defined
+  with_dict: postfix_ea_email_aliases
   notify:
     - execute newaliases
