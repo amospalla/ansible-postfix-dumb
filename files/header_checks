@@ -1,0 +1,2 @@
+# Discard recipients with @ in their name
+/^[Tt][Oo]: .*@.*/ DISCARD ONLY_LOCAL_ACCOUNTS_ALLOWED

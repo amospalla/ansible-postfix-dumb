@@ -1,0 +1,13 @@
+---
+- name: postmap sasl passwd
+  shell: /usr/sbin/postmap sasl_passwd
+  args:
+    chdir: /etc/postfix
+
+- name: restart postfix
+  service:
+    name: postfix
+    state: restarted
+
+- name: execute newaliases
+  shell: /usr/bin/newaliases
