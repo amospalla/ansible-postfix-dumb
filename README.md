@@ -1,4 +1,4 @@
-Ansible role for set up Postix.
+Ansible role for set up Postix to send mail through an external authenticated account only.
 
 This role sets up Postfix to use an authenticated smtp user on another e-mail server. It only allows delivering mail to local accounts.
 
