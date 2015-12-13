@@ -1,0 +1,32 @@
+---
+dependencies:
+  - role: test1
+  - role: bashrc
+    bashrc_path: /root/.bashrc
+  - role: packages
+    packages:
+      - name: postfix
+
+      - name: libsasl2-modules
+        Ubuntu:
+          versions: ['10', '12']
+        CentOS:
+          name: cyrus-sasl-plain
+
+      - name: libsasl2-modules-db
+        Ubuntu:
+          versions: ['14']
+        Debian:
+          disabled: true
+        CentOS:
+          disabled: true
+
+      - name: mailx
+        Debian:
+          name: bsd-mailx
+        Ubuntu:
+          name: bsd-mailx
+
+      - name: ca-certificates
+        CentOS:
+          disabled: True
