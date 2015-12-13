@@ -1,6 +1,6 @@
 # roles/postfix_dumb/tasks/main.yml
 ---
-- name: Postfix_dumb | Install Postfix (Debian)
+- name: Postfix with external account only | Install Postfix (Debian)
   apt:
     update_cache: yes
     cache_valid_time: 86400
@@ -14,7 +14,7 @@
     - ca-certificates
   when: ansible_os_family == "Debian"
 
-- name: Postfix_dumb | Install Postfix (RedHat)
+- name: Postfix with external account only | Install Postfix (RedHat)
   yum:
     name: "{{item}}"
     update_cache: no
@@ -25,7 +25,7 @@
     - cyrus-sasl-plain
   when: ansible_os_family == "RedHat"
 
-- name: Postfix_dumb | Set header_checks
+- name: Postfix with external account only | Set header_checks
   copy:
     src: header_checks
     dest: /etc/postfix
@@ -35,7 +35,7 @@
   notify:
     - restart postfix
 
-- name: Postfix_dumb | Set main.cf
+- name: Postfix with external account only | Set main.cf
   template:
     src: main.cf.j2
     dest: /etc/postfix/main.cf
@@ -45,12 +45,12 @@
   notify:
     - restart postfix
 
-- name: Postfix_dumb | Ensure postfix owns /etc/postfix
+- name: Postfix with external account only | Ensure postfix owns /etc/postfix
   file:
     path: /etc/postfix
     owner: postfix
 
-- name: Postfix_dumb | Set sasl_passwd
+- name: Postfix with external account only | Set sasl_passwd
   template:
     src: sasl_passwd.j2
     dest: /etc/postfix/sasl_passwd
@@ -60,14 +60,14 @@
   notify:
     - postmap sasl passwd
 
-- name: Postfix_dumb | Restart Postfix
+- name: Postfix with external account only | Restart Postfix
   service:
     name: postfix
     state: restarted
   when:
     - restart is defined
 
-- name: Postfix_dumb | Set aliases (others)
+- name: Postfix with external account only | Set aliases (others)
   lineinfile:
     dest: /etc/aliases
     group: root
