@@ -1,8 +1,5 @@
 ---
 dependencies:
-  - role: test1
-  - role: bashrc
-    bashrc_path: /root/.bashrc
   - role: packages
     packages:
       - name: postfix
@@ -30,3 +27,5 @@ dependencies:
       - name: ca-certificates
         CentOS:
           disabled: True
+    tags: # Add tag to allow packages role execute within this role
+      - postfix_external_account
