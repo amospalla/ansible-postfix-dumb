@@ -14,8 +14,8 @@ Mandatory:
 - _postfix_dumb_email_aliases_: dictionary for setting /etc/aliases file. Key/value correspond to user: destination.
 - _postfix_dumb_relay_host_: remote server host.
 - _postfix_dumb_relay_port_: remote server port.
--_postfix_dumb_relay_username_: remote account username.
--_postfix_dumb_relay_password_: remote account password.
+- _postfix_dumb_relay_username_: remote account username.
+- _postfix_dumb_relay_password_: remote account password.
 
 Optional:
 - _postfix_dumb_hostname_: hostname to use on main.cf instead of {{ ansible_inventory }}.
