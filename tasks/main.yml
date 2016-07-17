@@ -1,6 +1,5 @@
 ---
-- name: Postfix external account | Include
-  include: postfix.yml
-  when: postfix_ea_enable|default(True) == True
+- name: Include postfix-dumb.yml
+  include: postfix-dumb.yml
   tags:
-    postfix_external_account
+    - postfix-dumb

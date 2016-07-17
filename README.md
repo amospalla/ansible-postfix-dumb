@@ -1,17 +1,21 @@
-Ansible role for set up Postix to send mail through an external authenticated account only.
+# ansible-postfix-dumb
+* * *
 
-This role sets up Postfix to use an authenticated smtp user on another e-mail server. It only allows delivering mail to local accounts.
+## Description
 
-Variables:
+Installs and set up postfix to allow sending email through an external authenticated account.
 
-postfix_ea_enable: boolean (determines if role is applied to host)
+By default it allows sending email only to local accounts so /etc/aliases needs to be feed with real external accounts. This behaviour can be disabled setting _postfix_dumb_only_local_accounts_ to False.
 
-postfix_ea_relayhost:
-postfix_ea_relayhostport:
-postfix_ea_username:
-postfix_ea_password:
-postfix_ea_header_checks_only_local_users: boolean (only allow to send email to local accounts, who can then be mapped to something through aliases file)
+## Variables
 
-postfix_ea_email_aliases:
-  localuser1: user1@domain1
-  localuser2: user2@domain2
+Mandatory:
+
+- _postfix_dumb_email_aliases_: dictionary for setting /etc/aliases file. Key/value correspond to user: destination.
+- _postfix_dumb_relay_host_: remote server host.
+- _postfix_dumb_relay_port: remote server port.
+- _postfix_dumb_relay_username: remote account username.
+- _postfix_dumb_relay_password: remote account password.
+
+Optional:
+- _postfix_dumb_hostname_: hostname to use on main.cf instead of {{ ansible_inventory }}.

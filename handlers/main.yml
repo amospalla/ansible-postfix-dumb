@@ -10,4 +10,4 @@
     state: restarted
 
 - name: execute newaliases
-  shell: /usr/bin/newaliases
+  command: /usr/bin/newaliases
