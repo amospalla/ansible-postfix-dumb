@@ -6,13 +6,13 @@ dependencies:
 
       - name: libsasl2-modules
         Ubuntu:
-          versions: ['10', '12']
+          version: ['10', '12', '14']
         CentOS:
           name: cyrus-sasl-plain
 
       - name: libsasl2-modules-db
         Ubuntu:
-          versions: ['14']
+          version: ['14']
         Debian:
           disabled: true
         CentOS:
